@@ -11,11 +11,24 @@
  Target Server Version : 100140
  File Encoding         : 65001
 
- Date: 06/07/2019 21:36:31
+ Date: 08/07/2019 22:07:12
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for carr_prest
+-- ----------------------------
+DROP TABLE IF EXISTS `carr_prest`;
+CREATE TABLE `carr_prest`  (
+  `id_carr` int(255) NOT NULL,
+  `id_pres` int(255) NOT NULL,
+  PRIMARY KEY (`id_carr`, `id_pres`) USING BTREE,
+  INDEX `id_prestad`(`id_pres`) USING BTREE,
+  CONSTRAINT `id_carrer` FOREIGN KEY (`id_carr`) REFERENCES `carrera` (`id_carrera`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `id_prestad` FOREIGN KEY (`id_pres`) REFERENCES `prestador` (`id_prestador`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for carr_proy

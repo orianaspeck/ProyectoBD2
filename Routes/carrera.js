@@ -119,7 +119,7 @@ app.get("/edit/(:id_carrera)", function(req, res, next) {
                         "Carrera not found with id = " +
                             req.params.id_carrera
                     );
-                    res.redirect("/institucion");
+                    res.redirect("/carrera");
                 } else {
                     // if nombredetabla found
                     // render to views/nombredetable/edit.ejs template file

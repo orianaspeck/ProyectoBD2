@@ -200,14 +200,14 @@ app.post("/edit/(:fecha)", function(req, res, next) {
                         //AQUI SI SE COLOCA EL ID
                         res.render("reportes_horas/edit", {
                             title: "Editar reporte",
-                            id_prestador: req.body.id_prestador,
+                            id_prestador: req.params.id_prestador,
                             fecha: req.body.fecha,
-                            hora_entrada: req.body.hora_entrada,
-                            hora_salida: req.body.hora_salida,
-                            horas_servicio: req.body.horas_servicio,
-                            id_proyecto: req.body.id_proyecto,
-                            observacion: req.body.observacion,
-                            id_institucion: req.body.id_institucion
+                            hora_entrada: req.params.hora_entrada,
+                            hora_salida: req.params.hora_salida,
+                            horas_servicio: req.params.horas_servicio,
+                            id_proyecto: req.params.id_proyecto,
+                            observacion: req.params.observacion,
+                            id_institucion: req.params.id_institucion
                         });
                     } else {
                         req.flash(

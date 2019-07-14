@@ -1,0 +1,25 @@
+.hour {
+    color: #bbb;
+    cursor: pointer;
+  }
+.selected {
+  background-color: #46c57f;
+  color: white;
+}
+.table > tbody > tr.selected > td {
+  border-top: 1px solid #46c57f;
+}
+.selected td:hover {
+  background-color: #46c57fcb;
+  color: white;
+}
+.container {
+  width: 700px;
+  height: 600px;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

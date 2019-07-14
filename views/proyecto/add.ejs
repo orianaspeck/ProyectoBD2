@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html id="home" class="perfect-scrollbar-on">
+    <head>
+        <!--Cambiar titulo-->
+        <title>Añadir Proyecto</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"
+        ></script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+        />
+        <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.1"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <div
+                class="sidebar"
+                data-color="purple"
+                data-background-color="white"
+                data-image="https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-1.jpg"
+            >
+                <div class="logo">
+                    <a href="#" class="simple-text logo-normal">
+                        SOCIAL UCAB
+                    </a>
+                </div>
+                <div
+                    class="sidebar-wrapper ps-container ps-theme-default"
+                    data-ps-id="6b680f0b-7aa3-0fc9-85a6-2928c2b884ae"
+                >
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                <i class="material-icons">dashboard</i>
+                                <p>Inicio</p>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/programa">
+                                <i class="material-icons">content_paste</i>
+                                <p>Programas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/institucion">
+                                <i class="material-icons">content_paste</i>
+                                <p>Instituciones</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="main-panel ps-container ps-theme-default "
+                data-ps-id="dd12fe69-6573-b20b-9235-25b0c223a37f"
+            >
+                <div class="content">
+                    <div class="content-fluid">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <!--Cambiar por el nombre en plural de la tabla-->
+                                <h3 class="card-title">Añadir Proyectos</h3>
+                            </div>
+                            <div class=" card-body">
+                                <% if (messages.error) { %>
+                                <p style="color:red"><%- messages.error %></p>
+                                <% } %> <% if (messages.success) { %>
+                                <p style="color:green">
+                                    <%- messages.success %>
+                                </p>
+                                <% } %>
+                                <!--Cambiar por la ruta de la tabla correspondiente
+                                /nombredetabla/add
+                                -->
+                                <form
+                                    action="/proyecto/add"
+                                    method="post"
+                                    name="form1"
+                                >
+                                    <!--AGREGAR O QUITAR LOS ATRIBUTOS NECESARIOS
+                                    Utilizar el div class="form-group" como ejemplo
+                                    -->
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1"
+                                            >Nombre</label
+                                        >
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="nombre"
+                                            id="nombre"
+                                            value=""
+                                            placeholder="Ingrese Nombre"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <label
+                                            class="labelel"
+                                            for="exampleInputdescripcion1"
+                                            >Descripción</label
+                                        >
+                                        <input
+                                            type="text"
+                                            name="descripcion"
+                                            class="form-control"
+                                            id="descripcion"
+                                            aria-describedby="descripcionHelp"
+                                            placeholder="Ingrese Descripcion"
+                                            value=""
+                                        />
+                                    </div>
+
+                                    <input
+                                        type="submit"
+                                        class="btn btn-primary"
+                                        value="Añadir"
+                                    />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

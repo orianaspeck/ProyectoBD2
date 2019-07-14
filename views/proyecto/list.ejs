@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html id="home" class="perfect-scrollbar-on">
+    <head>
+        <!--Cambiar el titulo por el nombre en plural de la tabla-->
+        <title>Proyectos</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"
+        ></script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
+        />
+        <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.1"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" type="text/css" href="css/custom.css" />
+        <script>
+            function myFunction() {
+                var element = document.getElementById("home");
+                element.classList.toggle("nav-open");
+            }
+        </script>
+    </head>
+    <body class>
+        <% if (messages.error) { %>
+        <p style="color:red"><%- messages.error %></p>
+        <% } %> <% if (messages.success) { %>
+        <p class="alert alert-success mt-4"><%- messages.success %></p>
+        <% } %>
+        <br />
+        <!--Esta parte no la cambien-->
+        <div class="wrapper">
+            <div
+                class="sidebar"
+                data-color="purple"
+                data-background-color="white"
+                data-image="https://demos.creative-tim.com/material-dashboard/assets/img/sidebar-1.jpg"
+            >
+                <div class="logo">
+                    <a href="#" class="simple-text logo-normal">
+                        SOCIAL UCAB
+                    </a>
+                </div>
+                <div
+                    class="sidebar-wrapper ps-container ps-theme-default"
+                    data-ps-id="6b680f0b-7aa3-0fc9-85a6-2928c2b884ae"
+                >
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                <i class="material-icons">dashboard</i>
+                                <p>Inicio</p>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/programa">
+                                <i class="material-icons">content_paste</i>
+                                <p>Programas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/institucion">
+                                <i class="material-icons">content_paste</i>
+                                <p>Instituciones</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="main-panel ps-container ps-theme-default "
+                data-ps-id="dd12fe69-6573-b20b-9235-25b0c223a37f"
+            >
+                <nav
+                    class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top"
+                >
+                    <!--A PARTIR DE AQUI ES QUE VAN A EMPEZAR A MODIFICAR-->
+                    <!--Cambiar programa por el nombre de tabla-->
+                    <div class="container-fluid">
+                        <div class="navbar-wrapper">
+                            <a href="/proyecto/add" class="btn btn-info ml-3"
+                                >Nuevo Proyecto</a
+                            >
+                        </div>
+                        <button
+                            class="navbar-toggler"
+                            type="button"
+                            data-toggle="collapse"
+                            aria-controls="navigation-index"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                            onclick="myFunction()"
+                        >
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                            <span class="navbar-toggler-icon icon-bar"></span>
+                        </button>
+                    </div>
+                </nav>
+
+                <div class="content">
+                    <div class="content-fluid">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <!--Cambiar por el nombre en plural de la tabla-->
+                                <h4 class="card-title">Proyectos</h4>
+                            </div>
+                            <div class=" card-body">
+                                <div class=" table-responsive">
+                                    <table class="table ">
+                                        <thead class=" text-primary">
+                                            <tr>
+                                                <!--Aqui agregan th dependiendo de los atributos necesarios
+                                                Solo copien y peguen <th scope="col">Atributo</th>
+                                                -->
+                                                <!-- <th scope="col">ID del encargado</th>-->
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Descripción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if(data.length){ for(var i = 0;
+                                            i< data.length; i++) {%>
+                                            <tr class="trprueba">
+                                                <th scope="row">
+                                                    <%= (i+1) %>
+                                                </th>
+                                                <!--Aqui van a agregar o quitar los atributos correspondientes
+                                                dentro de los td y solo van a cambiar lo que va despues del punto
+                                                EJ:  <td><%=data[i].atributo%></td>
+                                                -->
+                                                <!-- <td><%= data[i].id_encargado%></td> -->
+                                                <td><%= data[i].nombre%></td>
+                                                <td><%= data[i].descripcion%></td>
+                                                <td>
+                                                    <!--Cambiar programa por la tabla correspondiente asi como el id
+                                                    EJ: nombredetabla/edit/<%=data[i].id_nombredetabla%>
+                                                    -->
+                                                    <a
+                                                        class="btn btn-success edit"
+                                                        href="../proyecto/edit/<%=data[i].id_proyecto%>"
+                                                        >Editar</a
+                                                    >
+                                                    <form
+                                                        class="dis-form"
+                                                        method="post"
+                                                        action="/proyecto/<%=data[i].id_proyecto%>"
+                                                    >
+                                                        <input
+                                                            type="hidden"
+                                                            name="_method"
+                                                            value="delete"
+                                                        />
+                                                        <!--Cambiar programa por el nombre de la tabla para la alerta
+                                                        Esto es lo ultima para cambiar
+                                                        -->
+                                                        <button
+                                                            type="submit"
+                                                            class="btn btn-danger delete"
+                                                            onclick="return confirm('¿Está seguro de querer eliminar este proyecto?');"
+                                                        >
+                                                            Borrar
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <% } }else{ %>
+                                            <tr>
+                                                <td colspan="3">
+                                                    Sin Programas
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <nav class="float-left">
+                            <ul></ul>
+                        </nav>
+                        <div class="copyright float-right">
+                            © 2019, made with
+                            <i class="material-icons">favorite</i> by
+                            <span class=" text-primary">BD2Team</span>
+                            for a better web.
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://demos.creative-tim.com/material-dashboard/assets/js/core/jquery.min.js"></script>
+        <script src="https://demos.creative-tim.com/material-dashboard/assets/js/core/popper.min.js"></script>
+        <script src="https://demos.creative-tim.com/material-dashboard/assets/js/core/bootstrap-material-design.min.js"></script>
+        <script src="https://demos.creative-tim.com/material-dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    </body>
+</html>

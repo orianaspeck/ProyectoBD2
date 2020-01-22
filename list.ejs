@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html id="home" class="perfect-scrollbar-on">
+<html id="home">
     <head>
-        <!--Cambiar el titulo por el nombre en plural de la tabla-->
-        <title>Programas</title>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <title>Horario Disponible</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"
         ></script>
+
         <link
             rel="stylesheet"
             type="text/css"
@@ -24,22 +24,18 @@
             href="https://demos.creative-tim.com/material-dashboard/assets/css/material-dashboard.min.css?v=2.1.1"
             rel="stylesheet"
         />
-        <link rel="stylesheet" type="text/css" href="css/custom.css" />
+        <link rel="stylesheet" type="text/css" href="../css/custom.css" />
+        <link rel="stylesheet" href="../javas/selector.css" />
         <script>
             function myFunction() {
                 var element = document.getElementById("home");
                 element.classList.toggle("nav-open");
             }
         </script>
+        
+
     </head>
-    <body class>
-        <% if (messages.error) { %>
-        <p style="color:red"><%- messages.error %></p>
-        <% } %> <% if (messages.success) { %>
-        <p class="alert alert-success mt-4"><%- messages.success %></p>
-        <% } %>
-        <br />
-        <!--Esta parte no la cambien-->
+    <body>
         <div class="wrapper">
             <div
                 class="sidebar"
@@ -58,135 +54,66 @@
                 >
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">
+                            <a class="nav-link" href="/index/<%=id_prestador%>">
                                 <i class="material-icons">dashboard</i>
                                 <p>Inicio</p>
                             </a>
                         </li>
+
+                        <li class="nav-item ">
+                            <a
+                                class="nav-link"
+                                href="/reportes_horas/<%=id_prestador%>"
+                            >
+                                <i class="material-icons">library_books</i>
+                                <p>Reportes</p>
+                            </a>
+                        </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="/programa">
-                                <i class="material-icons">content_paste</i>
-                                <p>Programas</p>
+                            <a
+                                class="nav-link"
+                                href="/horariodisp/<%=data[0].id_prestador%>"
+                            >
+                                <i class="material-icons">library_books</i>
+                                <p>Horario Disponible</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/institucion">
-                                <i class="material-icons">content_paste</i>
-                                <p>Instituciones</p>
+                            <a class="nav-link" href="/">
+                                <i class="material-icons">dashboard</i>
+                                <p>Cerrar Sesion</p>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div
-                class="main-panel ps-container ps-theme-default "
-                data-ps-id="dd12fe69-6573-b20b-9235-25b0c223a37f"
-            >
-                <nav
-                    class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top"
-                >
-                    <!--A PARTIR DE AQUI ES QUE VAN A EMPEZAR A MODIFICAR-->
-                    <!--Cambiar programa por el nombre de tabla-->
-                    <div class="container-fluid">
-                        <div class="navbar-wrapper">
-                            <a href="/programa/add" class="btn btn-info ml-3"
-                                >Nuevo Programa</a
-                            >
-                        </div>
-                        <button
-                            class="navbar-toggler"
-                            type="button"
-                            data-toggle="collapse"
-                            aria-controls="navigation-index"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                            onclick="myFunction()"
-                        >
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="navbar-toggler-icon icon-bar"></span>
-                            <span class="navbar-toggler-icon icon-bar"></span>
-                            <span class="navbar-toggler-icon icon-bar"></span>
-                        </button>
-                    </div>
-                </nav>
-
+            <div class="main-panel ps-container ps-theme-default " data-ps-id="dd12fe69-6573-b20b-9235-25b0c223a37f">
                 <div class="content">
-                    <div class="content-fluid">
-                        <div class="card">
-                            <div class="card-header card-header-primary">
-                                <!--Cambiar por el nombre en plural de la tabla-->
-                                <h4 class="card-title">Programas</h4>
-                            </div>
-                            <div class=" card-body">
-                                <div class=" table-responsive">
-                                    <table class="table ">
-                                        <thead class=" text-primary">
-                                            <tr>
-                                                <!--Aqui agregan th dependiendo de los atributos necesarios
-                                                Solo copien y peguen <th scope="col">Atributo</th>
-                                                -->
-                                                <th scope="col">#</th>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Descripción</th>
-                                                <th width="250px">Acción</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <% if(data.length){ for(var i = 0;
-                                            i< data.length; i++) {%>
-                                            <tr class="trprueba">
-                                                <th scope="row">
-                                                    <%= (i+1) %>
-                                                </th>
-                                                <!--Aqui van a agregar o quitar los atributos correspondientes
-                                                dentro de los td y solo van a cambiar lo que va despues del punto
-                                                EJ:  <td><%=data[i].atributo%></td>
-                                                -->
-                                                <td><%= data[i].nombre%></td>
-                                                <td>
-                                                    <%= data[i].descripcion%>
-                                                </td>
-                                                <td>
-                                                    <!--Cambiar programa por la tabla correspondiente asi como el id
-                                                    EJ: nombredetabla/edit/<%=data[i].id_nombredetabla%>
-                                                    -->
-                                                    <a
-                                                        class="btn btn-success edit"
-                                                        href="../programa/edit/<%=data[i].id_programa%>"
-                                                        >Editar</a
-                                                    >
-                                                    <form
-                                                        class="dis-form"
-                                                        method="post"
-                                                        action="/programa/<%=data[i].id_programa%>"
-                                                    >
-                                                        <input
-                                                            type="hidden"
-                                                            name="_method"
-                                                            value="delete"
-                                                        />
-                                                        <!--Cambiar programa por el nombre de la tabla para la alerta
-                                                        Esto es lo ultima para cambiar
-                                                        -->
-                                                        <button
-                                                            type="submit"
-                                                            class="btn btn-danger delete"
-                                                            onclick="return confirm('Estas seguro de querer eliminar este programa?');"
-                                                        >
-                                                            Borrar
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            <% } }else{ %>
-                                            <tr>
-                                                <td colspan="3">
-                                                    Sin Programas
-                                                </td>
-                                            </tr>
-                                            <% } %>
-                                        </tbody>
-                                    </table>
+                    <div class="container-fluid">
+                        <div class="row">
+                            
+                                   
+                            <div class="col-md-6">
+                                <div class="card card-profile">
+                                    <div class="card-header card-header-primary">
+                                        <h2 class="card-title ">Disponibilidad de Horas</h2>
+                                    </div>
+                                    <div class="card-body horario">
+                                        <div class="containerHoras">
+                                            <div id="selectorHoras" class="selectorHoras"></div>
+                                        </div>
+                                        <div class="container-button">
+                                            <form class="dis-form"
+                                            name="frm1"
+                                            method="post"
+                                            onsubmit="arr = guardarHorario()"
+                                            action="/horariodisp/<%=data[0].id_prestador%>">
+
+                                            <button type ="submit" name="foo" id="botonHorario" onclick="arr = guardarHorario()" class="btn btn-info ml-1"
+                                           >Guardar Horario<div class="ripple-container"></div></button></form>
+                                            <button id="botonMostrar" onclick="mostrarHorario(arr)" class="btn btn-info ml-1">Mostrar Horario<div class="ripple-container"></div></button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -200,16 +127,42 @@
                         <div class="copyright float-right">
                             © 2019, made with
                             <i class="material-icons">favorite</i> by
-                            <span class=" text-primary">BD2Team</span>
-                            for a better web.
+                            <span class=" text-primary">MSBD2Team</span>
+                            .
                         </div>
                     </div>
                 </footer>
+                <div
+                    class="ps-scrollbar-x-rail"
+                    style="left: 0px; bottom: 0px;"
+                >
+                    <div
+                        class="ps-scrollbar-x"
+                        tabindex="0"
+                        style="left: 0px; width: 0px;"
+                    ></div>
+                </div>
+                <div
+                    class="ps-scrollbar-y-rail"
+                    style="top: 0px; right: 0px; height: 970px;"
+                >
+                    <div
+                        class="ps-scrollbar-y"
+                        tabindex="0"
+                        style="top: 0px; height: 761px;"
+                    ></div>
+                </div>
             </div>
         </div>
+
+     
         <script src="https://demos.creative-tim.com/material-dashboard/assets/js/core/jquery.min.js"></script>
         <script src="https://demos.creative-tim.com/material-dashboard/assets/js/core/popper.min.js"></script>
         <script src="https://demos.creative-tim.com/material-dashboard/assets/js/core/bootstrap-material-design.min.js"></script>
-        <script src="https://demos.creative-tim.com/material-dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+         <script src="https://demos.creative-tim.com/material-dashboard/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="../javas/jQueryWeekly.js"></script>
+    <script src="../javas/selector.js"></script>
     </body>
 </html>
